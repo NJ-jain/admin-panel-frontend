@@ -6,7 +6,6 @@ import {
   CardContent,
   Typography,
   Button,
-  Grid,
   TextField,
   Stack,
   IconButton,
@@ -310,9 +309,19 @@ export default function DynamicFormBuilderPage() {
       ) : null}
 
       {/* Form Templates */}
-      <Grid container spacing={{ xs: 2, sm: 3 }}>
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: {
+            xs: "1fr",
+            sm: "repeat(2, 1fr)",
+            md: "repeat(3, 1fr)",
+          },
+          gap: { xs: 2, sm: 3 },
+        }}
+      >
         {mockFormTemplates.map((form) => (
-          <Grid item xs={12} sm={6} md={4} key={form.id}>
+          <Box key={form.id}>
             <Card
               variant="outlined"
               sx={{
@@ -437,9 +446,9 @@ export default function DynamicFormBuilderPage() {
                 </IconButton>
               </Box>
             </Card>
-          </Grid>
+          </Box>
         ))}
-      </Grid>
+      </Box>
     </Box>
   );
 }

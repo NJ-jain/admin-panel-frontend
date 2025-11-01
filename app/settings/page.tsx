@@ -17,7 +17,6 @@ import {
   InputLabel,
   Avatar,
   IconButton,
-  Grid,
   useTheme,
 } from "@mui/material";
 import {
@@ -131,34 +130,37 @@ export default function SettingsPage() {
                 <PhotoCameraIcon />
               </IconButton>
             </Box>
-            <Grid container spacing={{ xs: 2, sm: 3 }}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  fullWidth
-                  label="Display Name"
-                  value={settings.displayName}
-                  onChange={(e) => handleChange("displayName", e.target.value)}
-                  sx={{ mb: { xs: 2, sm: 0 } }}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  fullWidth
-                  label="Email"
-                  type="email"
-                  value={settings.email}
-                  onChange={(e) => handleChange("email", e.target.value)}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  fullWidth
-                  label="Phone Number"
-                  value={settings.phone}
-                  onChange={(e) => handleChange("phone", e.target.value)}
-                />
-              </Grid>
-            </Grid>
+            <Box
+              sx={{
+                display: "grid",
+                gridTemplateColumns: {
+                  xs: "1fr",
+                  sm: "repeat(2, 1fr)",
+                },
+                gap: { xs: 2, sm: 3 },
+              }}
+            >
+              <TextField
+                fullWidth
+                label="Display Name"
+                value={settings.displayName}
+                onChange={(e) => handleChange("displayName", e.target.value)}
+              />
+              <TextField
+                fullWidth
+                label="Email"
+                type="email"
+                value={settings.email}
+                onChange={(e) => handleChange("email", e.target.value)}
+              />
+              <TextField
+                fullWidth
+                label="Phone Number"
+                value={settings.phone}
+                onChange={(e) => handleChange("phone", e.target.value)}
+                sx={{ gridColumn: { xs: "1", sm: "span 2" } }}
+              />
+            </Box>
           </CardContent>
         </Card>
 
@@ -321,18 +323,26 @@ export default function SettingsPage() {
         </Card>
 
         {/* Appearance & General Settings */}
-        <Grid container spacing={{ xs: 2, sm: 3 }}>
-          <Grid item xs={12} md={6}>
-            <Card
-              variant="outlined"
-              sx={{
-                height: "100%",
-                transition: "box-shadow 0.2s",
-                "&:hover": {
-                  boxShadow: theme.shadows[2],
-                },
-              }}
-            >
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "1fr",
+              md: "repeat(2, 1fr)",
+            },
+            gap: { xs: 2, sm: 3 },
+          }}
+        >
+          <Card
+            variant="outlined"
+            sx={{
+              height: "100%",
+              transition: "box-shadow 0.2s",
+              "&:hover": {
+                boxShadow: theme.shadows[2],
+              },
+            }}
+          >
               <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
                 <Box
                   sx={{
@@ -399,18 +409,16 @@ export default function SettingsPage() {
                 </Stack>
               </CardContent>
             </Card>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Card
-              variant="outlined"
-              sx={{
-                height: "100%",
-                transition: "box-shadow 0.2s",
-                "&:hover": {
-                  boxShadow: theme.shadows[2],
-                },
-              }}
-            >
+          <Card
+            variant="outlined"
+            sx={{
+              height: "100%",
+              transition: "box-shadow 0.2s",
+              "&:hover": {
+                boxShadow: theme.shadows[2],
+              },
+            }}
+          >
               <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
                 <Typography
                   variant="h6"
@@ -469,8 +477,7 @@ export default function SettingsPage() {
                 </Stack>
               </CardContent>
             </Card>
-          </Grid>
-        </Grid>
+        </Box>
 
         {/* Save Button */}
         <Box
