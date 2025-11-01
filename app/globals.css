@@ -19,8 +19,41 @@
   }
 }
 
+/* Reset styles for MUI integration */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  background-attachment: fixed;
+}
+
+/* Glassmorphism base styles - Theme-aware background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #E0EAFB 0%, #CDE7F0 100%);
+  z-index: -1;
+  pointer-events: none;
+  transition: background 0.3s ease;
+}
+
+/* Dark theme background */
+body.dark-theme::before {
+  background: #000000;
 }
